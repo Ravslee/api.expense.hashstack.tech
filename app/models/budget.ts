@@ -3,14 +3,14 @@ import * as mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 export interface BudgetDocument extends mongoose.Document {
-    amount: string,
+    amount: Number,
 }
 // Model is from mongoose.Model
 interface BudgetModelInterface extends mongoose.Model<BudgetDocument> {
 
 }
 const budgetSchema = new Schema({
-    name: String,
+    amount: Number,
 }, { timestamps: true })
 
 

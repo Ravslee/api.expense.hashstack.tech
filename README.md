@@ -23,17 +23,11 @@ http://localhost:3000
  
 
 # Category API 
-
- GET        http://localhost:3000/core/api/category 
- 
- GET        http://localhost:3000/core/api/category/:categoryId 
- 
- POST       http://localhost:3000/core/api/category 
- 
- PUT        http://localhost:3000/core/api/category/:categoryId 
- 
- DELETE     http://localhost:3000/core/api/category/:categoryId 
- 
+ *GET        http://localhost:3000/core/api/category 
+ *GET        http://localhost:3000/core/api/category/:categoryId 
+ *POST       http://localhost:3000/core/api/category 
+ *PUT        http://localhost:3000/core/api/category/:categoryId 
+ *DELETE     http://localhost:3000/core/api/category/:categoryId 
 
 # Budget API 
 

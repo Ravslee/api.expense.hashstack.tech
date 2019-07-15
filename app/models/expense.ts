@@ -6,6 +6,8 @@ export interface ExpenseDocument extends mongoose.Document {
         itemName:string,
         amount:Number,
         category:any;
+        deleted:boolean,
+        date:Date,
 }
 // Model is from mongoose.Model
 interface ExpenseModelInterface extends mongoose.Model<ExpenseDocument> {
@@ -14,7 +16,9 @@ interface ExpenseModelInterface extends mongoose.Model<ExpenseDocument> {
 const  expenseSchema = new Schema({
     itemName:String,
     amount:Number,
-    category:{type:mongoose.Schema.Types.ObjectId, ref:'categories'}
+    category:{type:mongoose.Schema.Types.ObjectId, ref:'categories'},
+    deleted: {type:Boolean,default:false},
+    date:Date
     
 } ,{ timestamps: true })
 

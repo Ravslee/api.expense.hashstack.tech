@@ -10,6 +10,8 @@ router.get('/expense/:expenseId', expenseCtrl.getExpense);
 router.post('/expense', expenseCtrl.createExpense);
 router.put('/expense/:expenseId', expenseCtrl.updateExpense);
 router.delete('/expense/:expenseId', expenseCtrl.deleteExpense)
+router.get('/expense/chart/data', expenseCtrl.getAllExpenseDataForChart);
+
 
 router.get('/category', categoryCtrl.getAllCategories);
 router.get('/category/:categoryId', categoryCtrl.getCategory);

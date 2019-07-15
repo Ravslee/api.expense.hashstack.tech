@@ -17,10 +17,35 @@ export const getExpense = (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
-export const getAllExpense = ((req: Request, res: Response, next: NextFunction) => {
+export const getAllExpense = (async (req: Request, res: Response, next: NextFunction) => {
     if (req) {
+        
+        const count = await ExpenseModel.find().count();
         ExpenseModel
             .find()
+            .sort('-updatedAt')
+            .populate("category", "name")
+            .exec()
+            .then((docs: any[]) => {
+                res.send({ message: "Expense query completed!", count: count, data: docs });
+            })
+            .catch((err: any) => {
+                console.error(err);
+                res.status(450).send({ message: "Expense query failed! err = " + err });
+            });
+    } else {
+        res.status(400).send({ message: "Missing required fields." });
+    }
+})
+
+export const getAllExpenseDataForChart = ((req: Request, res: Response, next: NextFunction) => {
+    if (req) {
+        let where: any = {};
+        where.deleted = false;
+        ExpenseModel
+            .find(where)
+            .select('category amount')
+            .sort('-updatedAt')
             .populate("category", "name")
             .exec()
             .then((docs: any[]) => {
@@ -34,7 +59,6 @@ export const getAllExpense = ((req: Request, res: Response, next: NextFunction) 
         res.status(400).send({ message: "Missing required fields." });
     }
 })
-
 
 export const createExpense = ((req: Request, res: Response, next: NextFunction) => {
     console.log(req.body);
@@ -60,7 +84,7 @@ export const createExpense = ((req: Request, res: Response, next: NextFunction) 
 export const updateExpense = ((req: Request, res: Response, next: NextFunction) => {
 
     delete req.body._id;
-    ExpenseModel.findOneAndUpdate(req.params.expenseId, { $set: req.body }).exec()
+    ExpenseModel.findOneAndUpdate({ _id: req.params.expenseId }, { $set: req.body }).exec()
         .then((doc) => {
             getExpense(req, res, next)
         })
