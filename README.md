@@ -1,4 +1,4 @@
-# api.expense.hashstack.tech
+# Expense server
 REST API Implementation using Express Js 
 
 ## API Implemented using ExpressJs and Typescript
