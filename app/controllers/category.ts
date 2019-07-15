@@ -59,7 +59,8 @@ export const createCategory = ((req: Request, res: Response, next: NextFunction)
 export const updateCategory = ((req: Request, res: Response, next: NextFunction) => {
 
     delete req.body._id;
-    CategoryModel.findOneAndUpdate(req.params.categoryId, { $set: req.body }).exec()
+    
+    CategoryModel.findOneAndUpdate({_id:req.params.categoryId}, { $set: req.body }).exec()
         .then((doc) => {
             getCategory(req, res, next)
         })
