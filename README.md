@@ -14,7 +14,7 @@ The server will listen to port at *3000* http://localhost:3000
 * Mongoose  [Mongoose](https://mongoosejs.com/)
 
 
-# Expense API 
+## Expense API 
 
  GET        http://localhost:3000/core/api/expense
  
@@ -29,7 +29,7 @@ The server will listen to port at *3000* http://localhost:3000
  DELETE     http://localhost:3000/core/api/expense/:expenseId 
  
 
-# Category API 
+## Category API 
  *GET        http://localhost:3000/core/api/category 
 
  *GET        http://localhost:3000/core/api/category/:categoryId 
@@ -40,7 +40,7 @@ The server will listen to port at *3000* http://localhost:3000
 
  *DELETE     http://localhost:3000/core/api/category/:categoryId 
 
-# Budget API 
+## Budget API 
 
  GET        http://localhost:3000/core/api/budget 
  
